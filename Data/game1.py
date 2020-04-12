@@ -1,16 +1,20 @@
 import pygame, random,time
 
 pygame.init()
-screen = pygame.display.set_mode((1920, 960))
+screen = pygame.display.set_mode((1920, 1080),pygame.FULLSCREEN)
 pygame.display.set_caption('Easter catchers 2020')
 done = False
 char = pygame.image.load('PLAYER.png')
 egg = pygame.image.load('Egg.png')
 eggx, eggy = (((random.randint(6,156)/10))*100,80)
 x = 960
+pygame.mixer.music.load('Energy.mp3')# Copyright bensounds
+icon = pygame.image.load('iCON.png')
+pygame.display.set_icon(icon)
+pygame.mixer.music.play(-1)
 font = pygame.font.SysFont("comicsansms", 72)
 points = 0
-text = font.render(f"Hello, World", True, (0, 128, 0))
+text = font.render(f"NAN", True, (0, 128, 0))
 clock = pygame.time.Clock()
 while not done:
         for event in pygame.event.get():
@@ -29,8 +33,8 @@ while not done:
         clock.tick(30)
         pygame.display.update()
         screen.fill((153, 217, 234))
-        eggy += 10
-        if eggy == 960:
+        eggy += 7.5
+        if eggy >= 1080:
                 eggx, eggy = (((random.randint(6,156)/10))*100,80)
                 points -= 1
         if x >= eggx-65 and x <= eggx+65:
